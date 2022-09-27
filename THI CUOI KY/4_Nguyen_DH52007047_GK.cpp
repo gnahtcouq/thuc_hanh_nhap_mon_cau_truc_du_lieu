@@ -10,10 +10,10 @@ struct CAYBUT {
 };
 struct NODECAYBUT {
     CAYBUT data;
-    NODECAYBUT* link;
+    NODECAYBUT *link;
 };
-typedef NODECAYBUT* Nodeptr;
-void khoiTao(Nodeptr & x);
+typedef NODECAYBUT *Nodeptr;
+void khoiTao(Nodeptr &x);
 Nodeptr taoNode(CAYBUT a);
 Nodeptr themCuoi(Nodeptr &x, CAYBUT c);
 void nhap_DanhSachCayBut(Nodeptr &x);
@@ -22,9 +22,9 @@ void sapxep_GiamDanTheoGia(Nodeptr &x);
 
 struct NODE {
     int data;
-    NODE* link;
+    NODE *link;
 };
-typedef NODE* NODEPTR;
+typedef NODE *NODEPTR;
 struct QUEUE {
     NODEPTR front, rear;
 };
@@ -91,9 +91,7 @@ int main() {
     return 0;
 }
 
-void khoiTao(Nodeptr &x) {
-    x = NULL;
-}
+void khoiTao(Nodeptr &x) { x = NULL; }
 
 Nodeptr taoNode(CAYBUT c) {
     Nodeptr p;
@@ -109,8 +107,7 @@ Nodeptr themCuoi(Nodeptr &x, CAYBUT c) {
         x = p;
     else {
         Nodeptr q = x;
-        while (q->link != NULL) 
-            q = q->link;
+        while (q->link != NULL) q = q->link;
         q->link = p;
     }
     return p;
@@ -123,8 +120,7 @@ void nhap_DanhSachCayBut(Nodeptr &x) {
         cout << "\nCay but thu " << dem++;
         cout << "\nNhap ma cay but (nhap -1 de thoat):  ";
         cin >> a.maCB;
-        if (a.maCB == -1)
-            break;
+        if (a.maCB == -1) break;
         cin.ignore();
         cout << "Nhap ten cay but: ";
         cin.getline(a.tenCB, 30);
@@ -153,15 +149,16 @@ void xuat_DanhSachCayBut(Nodeptr x) {
 }
 
 void sapxep_GiamDanTheoGia(Nodeptr &x) {
-  for (Nodeptr bienTam = x; bienTam != NULL; bienTam = bienTam->link) {
-    for (Nodeptr bienTam2 = bienTam->link; bienTam2 != NULL; bienTam2 = bienTam2->link) {
-      if (bienTam->data.donGia < bienTam2->data.donGia) {
-        CAYBUT butTam = bienTam->data;
-        bienTam->data = bienTam2->data;
-        bienTam2->data = butTam;
-      }
+    for (Nodeptr bienTam = x; bienTam != NULL; bienTam = bienTam->link) {
+        for (Nodeptr bienTam2 = bienTam->link; bienTam2 != NULL;
+             bienTam2 = bienTam2->link) {
+            if (bienTam->data.donGia < bienTam2->data.donGia) {
+                CAYBUT butTam = bienTam->data;
+                bienTam->data = bienTam2->data;
+                bienTam2->data = butTam;
+            }
+        }
     }
-  }
 }
 
 /* ---------------------- Queue ----------------------*/
@@ -171,8 +168,7 @@ void init_QUEUE(QUEUE &q) {
 }
 
 int isEmpty_QUEUE(QUEUE q) {
-    if (q.front == NULL)
-        return 1;
+    if (q.front == NULL) return 1;
     return 0;
 }
 
@@ -190,8 +186,7 @@ void enQueue_QUEUE(QUEUE &q, int x) {
     if (isEmpty_QUEUE(q)) {
         q.front = p;
         q.rear = p;
-    }
-    else {
+    } else {
         q.rear->link = p;
         q.rear = p;
     }
@@ -214,8 +209,7 @@ void setValue_QUEUE(QUEUE &q) {
     while (1) {
         cout << "\nNhap vao hang doi (-1 de thoat): ";
         cin >> a;
-        if (a == -1)
-            break;
+        if (a == -1) break;
         enQueue_QUEUE(q, a);
     }
 }
@@ -239,19 +233,14 @@ void cau1_QUEUE(QUEUE &q, int x, int pos) {
         vitri += 1;
     }
     enQueue_QUEUE(bienTam, x);
-    while (!isEmpty_QUEUE(p))
-        enQueue_QUEUE(bienTam, deQueue_QUEUE(p));
+    while (!isEmpty_QUEUE(p)) enQueue_QUEUE(bienTam, deQueue_QUEUE(p));
     q = bienTam;
 }
 
 /* ---------------------- Stack ----------------------*/
-void init_STACK(STACK &s) {
-    s.top = NULL;
-}
+void init_STACK(STACK &s) { s.top = NULL; }
 
-int isEmpty_STACK(STACK s) {
-    return s.top == NULL;
-}
+int isEmpty_STACK(STACK s) { return s.top == NULL; }
 
 NODEPTR createNode_STACK(int x) {
     NODEPTR p = new NODE;
@@ -276,8 +265,7 @@ void input_STACK(STACK &s) {
     while (1) {
         cout << "\nNhap vao ngap xep (-1 de thoat): ";
         cin >> x;
-        if (x == -1)
-            break;
+        if (x == -1) break;
         push_STACK(s, x);
     }
 }
@@ -317,8 +305,7 @@ void pushtop_STACK(STACK &s, int a) {
         s.top = p;
     else {
         NODEPTR q = s.top;
-        while (q->link != NULL)
-            q = q->link;
+        while (q->link != NULL) q = q->link;
         q->link = p;
     }
 }

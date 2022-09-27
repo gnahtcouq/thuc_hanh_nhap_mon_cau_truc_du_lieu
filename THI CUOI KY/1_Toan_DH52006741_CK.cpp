@@ -1,5 +1,6 @@
-#include <iostream>
 #include <string.h>
+
+#include <iostream>
 using namespace std;
 
 struct CAYBUT {
@@ -160,8 +161,7 @@ void xoa_ButBangHangSX(Nodeptr& list, CAYBUT a) {
         Nodeptr p = list;
         list = list->link;
         delete p;
-    }
-    else {
+    } else {
         Nodeptr p, before;
         p = list;
         before = list;
@@ -184,8 +184,7 @@ void xoa_ThongTinTatCaButThuocHangX(Nodeptr& list, char* str) {
                 q = p->link;
                 xoa_ButBangHangSX(list, p->data);
                 p = q;
-            }
-            else
+            } else
                 p = p->link;
         }
     }
@@ -216,8 +215,7 @@ void enQueue_QueueLK(QUEUE& k, int x) {
     if (isEmpty_QueueLK(k)) {
         k.front = p;
         k.rear = p;
-    }
-    else {
+    } else {
         k.rear->link = p;
         k.rear = p;
     }
@@ -277,8 +275,6 @@ void chenSauNode_QueueLK(QUEUE& k, int x, int pos) {
         enQueue_QueueLK(tam, deQueue_QueueLK(p));
     k = tam;
 }
-
-
 
 void khoiTao_StackLK(STACK& s) {
     s.top = NULL;
